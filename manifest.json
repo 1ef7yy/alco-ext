@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "AlcoExtension",
+  "version": "0.1.0",
+  "description": "Searches information about alcoholic beverages with a mouse click",
+
+  "icons": {
+    "48": "icons/extlogo.jpeg"
+  },
+  "background": {
+    "scripts": [
+      "parser.js"
+    ]
+  },
+  "permissions": [
+    "contextMenus"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_scripts/alcoext.js"]
+    }
+  ]
+}
