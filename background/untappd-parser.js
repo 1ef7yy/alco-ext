@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 
 const generateQuery = (name) => {
 
-    const prefix = "https://www.vivino.com/search/wines?q="
+    const prefix = "https://untappd.com/search?q="
     const suffix = name.split(' ').join("+")
     return prefix + suffix;
 }
@@ -25,7 +25,7 @@ const getLinks = async(url) => {
             // wouldnt work without this conversion for some reason
             // (TypeError: Cannot read properties of undefined (reading 'startsWith'))
             let value = String(hrefs[i])
-            if (value.startsWith("/wines/")){
+            if (value.startsWith("/b/")){
                 validHrefs.push(value.toString());
             }
         }
@@ -33,7 +33,7 @@ const getLinks = async(url) => {
         let links = []
 
         for (const href of validHrefs) {
-            links.push(`https://www.vivino.com${href}`)
+            links.push(`https://untappd.com${href}`)
         }
 
         return links;
