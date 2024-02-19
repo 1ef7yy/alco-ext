@@ -5,7 +5,7 @@ const generateQuery = (name) => {
 
     const prefix = "https://www.vivino.com/search/wines?q="
     const suffix = name.split(' ').join("+")
-    return prefix + suffix;
+    return prefix + encodeURI(suffix);
 }
 
 
@@ -43,7 +43,6 @@ const getLinks = async(url) => {
         console.log(e);
     }
 }
-
 
 
 module.exports = [

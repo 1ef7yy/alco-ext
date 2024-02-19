@@ -5,7 +5,8 @@ const generateQuery = (name) => {
 
     const prefix = "https://untappd.com/search?q="
     const suffix = name.split(' ').join("+")
-    return prefix + suffix;
+
+    return prefix+encodeURIComponent(suffix);
 }
 
 
@@ -13,6 +14,7 @@ const getLinks = async(url) => {
     try{
         const response = await unirest.get(url)
         const data = response.body
+
         const $ = cheerio.load(data)
 
         let hrefs = []
@@ -43,6 +45,7 @@ const getLinks = async(url) => {
         console.log(e);
     }
 }
+
 
 
 
